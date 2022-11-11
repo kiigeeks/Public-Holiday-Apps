@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import Country from "./components/Country/main.country";
+import ErrorNotFound from "./components/Error/main.error";
+import Home from "./components/Home/main.home";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home title="Mini Public Holiday"/>} />
+          <Route path="country" element={<Country title="Mini Public Holiday"/>} />
+          <Route path="*" element={<ErrorNotFound></ErrorNotFound>}></Route>
+        </Routes>
+      </Router>
     </div>
   );
 }
