@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { Container, Table } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import GetDate from '../utilities/getDate'
-import GetDayHolidays from '../utilities/getHoliday'
+import {GetDayHolidays} from '../utilities/getHoliday'
 import GetIP from '../utilities/getIP'
 
 const Home = ({ title }) => {
