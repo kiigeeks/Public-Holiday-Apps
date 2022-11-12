@@ -1,4 +1,6 @@
-const GetDate = (data) => {
+
+
+export const GetDate = (data) => {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const dateFormat= new Date(data)
     const finalDate = days[dateFormat.getDay()]+", "+
@@ -8,4 +10,9 @@ const GetDate = (data) => {
     return finalDate
 }
 
-export default GetDate
+export const GetMonth = (data) => {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+    const dateFormat = new Date(data)
+    const finalMonth = months[dateFormat.getMonth()]
+    return finalMonth
+}
