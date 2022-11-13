@@ -27,7 +27,7 @@ const Home = ({ title }) => {
                 setHolidayDataList(hasil)
             })
         }
-    }, [codeCountry])
+    }, [codeCountry, years])
 
     return (
         <Container className="mb-5">

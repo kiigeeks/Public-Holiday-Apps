@@ -10,8 +10,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home title={title} />} />
-          <Route path="country" element={<Country title={title}/>} />
-          <Route path="*" element={<ErrorNotFound></ErrorNotFound>}></Route>
+          <Route path="country" element={<Country title={title} />} />
+          <Route path="*" element={<ErrorNotFound></ErrorNotFound>} />
         </Routes>
       </Router>
     </div>

@@ -8,9 +8,11 @@ import GetDetailCountry from '../utilities/getDetailCountry'
 import { GetDayHolidays, GetPeriodHoliday } from '../utilities/getHoliday'
 import DataCountry from './data.country'
 import AlertToast from '../utilities/getAlert'
+import { GetMonths } from '../utilities/getDate'
 
 const Country = ({ title }) => {
     const [countryList, setCountryList] = useState([])
+    const [monthList, setMonthList] = useState([])
     const [codeCountry, setCodeCountry] = useState ("")
     const [country, setCountry] = useState ("")
     const [month, setMonth] = useState ("")
@@ -19,12 +21,14 @@ const Country = ({ title }) => {
     const [holidayDataList, setHolidayDataList] = useState ([])
     const [showError, setShowError] = useState(false)
     const [msgError, setMsgError] = useState("")
+    
 
     useEffect(() => {
         //get avaible country & set to select box
         GetAllCountry().then((allCountry) => {
             setCountryList(allCountry);
         })
+        setMonthList(GetMonths())
     }, [])
 
     const handleFilter = (e) => {
@@ -81,11 +85,23 @@ const Country = ({ title }) => {
                                 <div className="row g-2 mb-3">
                                     <div className="col-md">
                                         <div className="form-floating">
-                                            <input type="number" className="form-control" placeholder="12" value={month} onChange={(e) => {
+                                            {/* month by input */}
+                                            {/* <input type="number" className="form-control" placeholder="12" value={month} onChange={(e) => {
                                                 setMonth(e.target.value)
                                                 setShowTableList(false)
-                                            }} />
-                                            <label htmlFor="month">Month (12)</label>
+                                            }} /> */}
+                                            {/* month by select  */}
+                                            <select className="form-select" onChange={(e) => {
+                                                setMonth(e.target.value)
+                                                setShowTableList(false)
+                                            }}>
+                                                <option value="">Select Month</option>
+                                                {monthList.map((dataMonth, i) => (
+                                                        <option key={i} value={dataMonth.id}>{dataMonth.name}</option>
+                                                    )
+                                                )}
+                                            </select>
+                                            <label htmlFor="month">Month</label>
                                         </div>
                                     </div>
                                     <div className="col-md">

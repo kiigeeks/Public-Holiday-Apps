@@ -1,8 +1,8 @@
 import React from 'react'
 import { Alert } from 'react-bootstrap'
 
-const AlertToast = ({ msgError, setShowError}) => {
-    //hidden alert after 3 second
+const AlertToast = ({ msgError, setShowError }) => {
+    //hidden alert after 5 second
     setTimeout(() => {
         setShowError(false)
     }, 5000)

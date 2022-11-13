@@ -7,22 +7,22 @@ const DataCountry = ({ country, month, years, holidayDataList }) => {
     const [nameMonth, setNameMonth] = useState("")
 
     useEffect(() => {
-        if(month && years) GetDatas()
-    }, [])
+        const GetDatas = () => {
+            const filterDataList = holidayDataList.filter((data) => {
+                const M = new Date(data.date)
+                const filterMonth = M.getMonth()+1
+                return filterMonth === Number(month);
+            })
+            setDatasList(filterDataList)
+            setNameMonth(GetMonth(month))
+        }
 
-    const GetDatas = () => {
-        const filterDataList = holidayDataList.filter((data) => {
-            const M = new Date(data.date)
-            const filterMonth = M.getMonth()+1
-            return filterMonth == month;
-        })
-        setDatasList(filterDataList)
-        setNameMonth(GetMonth(month))
-    }
+        if(month && years) GetDatas() 
+    }, [month, years, holidayDataList])
 
     return (
         <div>
-            <h4 className='text-center mt-5'>Holiday at <i>{country}</i>, Period {years ? (<i>{nameMonth+" "+years}</i>) : (<i>Next 365 days</i>)}</h4>
+            <h4 className="text-center mt-5">Holiday at <i>{country}</i>, Period {years ? (<i>{nameMonth+" "+years}</i>) : (<i>Next 365 days</i>)}</h4>
             <div className="table-responsive mt-3 d-flex justify-content-center">
                 <Table striped bordered hover className="w-auto">
                     <thead>
@@ -33,7 +33,7 @@ const DataCountry = ({ country, month, years, holidayDataList }) => {
                     </thead>
                     <tbody>
                         {datasList.map((data, i) => {
-                            const { date, localName, name} = data
+                            const { date, localName, name } = data
                             return (
                                 <tr key={i}>
                                     <td>{GetDate(date)}</td>
