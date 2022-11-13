@@ -127,7 +127,7 @@ const Country = ({ title }) => {
                                     </select>
                                     <label htmlFor="country">Country</label>
                                 </div>
-                                <div className="my-3 d-flex justify-content-center gap-3">
+                                <div className="mt-3 mb-2 d-flex justify-content-center gap-3">
                                     <Button variant="success" type="submit">Search</Button>
                                 </div>
                             </form>
